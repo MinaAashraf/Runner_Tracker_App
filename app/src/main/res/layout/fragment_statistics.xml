@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.ma.development.runnertracker.ui.viewmodels.StatisticsViewModel" />
+        <variable
+            name="runStatistics"
+            type="com.ma.development.runnertracker.data.pojo.Run" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.StatisticsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_230sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="#fff"
+            android:elevation="1dp"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aldrich"
+                android:text="Statistics"
+                android:textColor="#000"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toTopOf="@id/view3"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/purple_500"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/circle_center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view3"
+                android:background="@color/purple_500"
+
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@color/purple_500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/circle_center"
+                app:layout_constraintTop_toBottomOf="@id/view3" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@color/purple_500"
+                app:layout_constraintBottom_toTopOf="@id/circle_center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view3" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@color/purple_500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/circle_center" />
+
+            <ImageView
+                android:id="@+id/circle_center"
+                app:tint="@color/purple_700"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:gravity="center_horizontal"
+                android:textColor="#000"
+                android:src="@drawable/circle_icon"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view3" />
+
+
+            <TextView
+                android:id="@+id/player_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aldrich"
+                android:gravity="center"
+                app:durationInMillis="@{vm.totalRunTime}"
+                android:textColor="#000"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintCircle="@id/circle_center"
+                app:layout_constraintCircleAngle="290"
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view3"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:textColor="#AAAAAA"
+                android:textStyle="bold"
+                app:layout_constraintCircle="@id/player_age"
+                app:layout_constraintCircleRadius="@dimen/_35sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view3" />
+
+            <TextView
+                android:id="@+id/avg_speed_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aldrich"
+                android:gravity="center"
+                android:text="@{vm.totalAvgSpeed +` Km/h`}"
+                android:textColor="#000"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintCircle="@id/circle_center"
+                app:layout_constraintCircleAngle="70"
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avg speed"
+                android:textColor="#AAAAAA"
+                android:textStyle="bold"
+                app:layout_constraintCircle="@id/avg_speed_view"
+                app:layout_constraintCircleRadius="@dimen/_35sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view3" />
+
+            <TextView
+                android:id="@+id/distanceInKm_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aldrich"
+                android:gravity="center"
+                app:distance="@{vm.totalDistance}"
+                android:textColor="#000"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintCircle="@id/circle_center"
+                app:layout_constraintCircleAngle="250"
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distance"
+                android:textColor="#AAAAAA"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircle="@id/distanceInKm_view"
+                app:layout_constraintCircleAngle="180"
+                app:layout_constraintCircleRadius="@dimen/_35sdp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/burned_calories_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aldrich"
+                android:gravity="center"
+                android:text="@{vm.totalBurnedCalories + ` Kcal`}"
+                android:textColor="#000"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircle="@id/circle_center"
+                app:layout_constraintCircleAngle="110"
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calories"
+                android:textColor="#AAAAAA"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircle="@id/burned_calories_view"
+                app:layout_constraintCircleAngle="180"
+                app:layout_constraintCircleRadius="@dimen/_35sdp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_200sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

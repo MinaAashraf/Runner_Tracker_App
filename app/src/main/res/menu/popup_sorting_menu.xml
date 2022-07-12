@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Sort by date"
+        android:id="@+id/srtByDateItem"
+        />
+
+    <item
+        android:title="Sort by duration"
+        android:id="@+id/srtByDurationItem"
+        />
+
+    <item
+        android:title="Sort by speed"
+        android:id="@+id/srtBySpeedItem"
+        />
+
+    <item
+        android:title="Sort by distance"
+        android:id="@+id/srtByDistanceItem"
+        />
+
+
+    <item
+        android:title="Sort by burned calories"
+        android:id="@+id/srtByCaloriesItem"
+        />
+
+</menu>

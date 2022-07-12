@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="run"
+            type="com.ma.development.runnertracker.data.pojo.Run" />
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/map_screenshot_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_200sdp"
+            android:background="@drawable/border_background"
+            android:padding="@dimen/_3sdp"
+            android:scaleType="centerCrop"
+            android:textSize="@dimen/_9ssp"
+            app:bitmap="@{run.img}"
+            app:context="@{context}"
+            app:layout_constraintBottom_toTopOf="@id/avg_speed_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toStartOf="@+id/timeDuration_view"
+            app:layout_constraintStart_toEndOf="@+id/timestamp_view"
+            app:layout_constraintTop_toTopOf="@id/avg_speed_view" />
+
+        <TextView
+            android:id="@+id/timestamp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/aldrich"
+            android:text="7/10/22"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            app:date="@{run.timeStamp}"
+            app:layout_constraintEnd_toStartOf="@+id/timeDuration_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/map_screenshot_view"
+            tools:layout_editor_absoluteY="36dp"
+
+            />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toStartOf="@+id/distanceInKm_view"
+            app:layout_constraintStart_toEndOf="@+id/timeDuration_view"
+            app:layout_constraintTop_toTopOf="@id/avg_speed_view" />
+
+        <TextView
+            android:id="@+id/timeDuration_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/aldrich"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            app:durationInMillis="@{run.timeInMillis}"
+            app:layout_constraintEnd_toStartOf="@+id/distanceInKm_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/timestamp_view"
+            app:layout_constraintTop_toBottomOf="@+id/map_screenshot_view"
+            tools:layout_editor_absoluteY="36dp"
+
+            />
+
+
+        <TextView
+            android:id="@+id/distanceInKm_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/aldrich"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            app:distance="@{run.distanceInMeters}"
+            app:layout_constraintEnd_toStartOf="@+id/avg_speed_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/timeDuration_view"
+            app:layout_constraintTop_toBottomOf="@+id/map_screenshot_view"
+            tools:layout_editor_absoluteY="36dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toStartOf="@+id/avg_speed_view"
+            app:layout_constraintStart_toEndOf="@+id/distanceInKm_view"
+            app:layout_constraintTop_toTopOf="@id/avg_speed_view" />
+
+        <TextView
+            android:id="@+id/avg_speed_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/aldrich"
+            android:text="@{run.avrSpeedKMH +` km/h`}"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/burned_calories_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/distanceInKm_view"
+            app:layout_constraintTop_toBottomOf="@+id/map_screenshot_view"
+            tools:layout_editor_absoluteY="36dp"
+
+            />
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toStartOf="@+id/burned_calories_view"
+            app:layout_constraintStart_toEndOf="@+id/avg_speed_view"
+            app:layout_constraintTop_toTopOf="@id/avg_speed_view" />
+
+        <TextView
+            android:id="@+id/burned_calories_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/aldrich"
+            android:text="@{run.burnedCalories +` Kcal`}"
+
+            android:textColor="@color/grey"
+
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/avg_speed_view"
+            app:layout_constraintTop_toBottomOf="@+id/map_screenshot_view"
+            tools:layout_editor_absoluteY="37dp"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
